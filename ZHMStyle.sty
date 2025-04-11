@@ -1,0 +1,100 @@
+\ProvidesPackage{zhmstyle}[2025/04/10 Hongming Zhu's custom style package]
+
+% Import frequently used packages
+\RequirePackage{amsmath} % For advanced math features (e.g., align, cases)
+\RequirePackage{amsfonts} % For extra fonts like math fonts (e.g., \mathbb)
+\RequirePackage{graphicx} % For including and manipulating images
+\RequirePackage{geometry} % For adjusting page layout (margins, paper size, etc.)
+\RequirePackage{hyperref} % For hyperlinked references, URLs, and metadata
+\RequirePackage{tikz} % For drawing diagrams and figures directly in LaTeX
+\RequirePackage{fancyhdr} % For customizing headers and footers in the document
+\RequirePackage{lipsum} % For generating filler text (useful for testing layouts)
+\RequirePackage{lmodern} % For modern, high-quality fonts (Latin Modern)
+\RequirePackage[most]{tcolorbox} % For creating colored boxes, with extensive options
+\RequirePackage{float} % For controlling the placement of figures and tables
+
+% code
+\RequirePackage{listings}
+
+% emoji
+% LuaTex
+% \RequirePackage{emoji} % For \emoji{2764} https://emojipedia.org/
+\RequirePackage{fontawesome5} % \faThumbsUp \faSmile ...
+% https://mirrors.ibiblio.org/CTAN/fonts/fontawesome5/doc/fontawesome5.pdf
+
+% images
+\RequirePackage{subcaption}
+\RequirePackage[export]{adjustbox}
+\RequirePackage{wrapfig}
+
+
+
+\geometry{
+letterpaper,
+top=2cm,
+bottom=2cm,
+left=3cm,
+right=3cm,
+marginparwidth=1.75cm
+}
+
+\hypersetup{
+colorlinks=true,
+linkcolor=blue,
+% filecolor=cyan,    
+urlcolor=magenta,
+% allcolors=blue
+}
+
+% test
+\newcommand{\mycommand}[2]{This is the first argument: #1 and the second argument: #2}
+
+% enum boxes
+\newtcolorbox[auto counter,number within=chapter] % <init options>: allow setting up automatic numbering
+{enumbox} % <name> ⚠️
+[3] % number of arguments
+[] % default, the default value for the optional first argument
+{colback=red!5!white,colframe=red!75!black,fonttitle=\bfseries, title=#2 \thetcbcounter: #3,#1} % options ⚠️
+
+% colback=green!5!white,colframe=green!75!black
+
+
+% title boxes
+\newtcolorbox{yellowbox}[1]{
+colback=yellow!5!white,colframe=yellow!50!black,colbacktitle=yellow!75!black,
+fonttitle=\bfseries, title={#1}}
+\newtcolorbox{redbox}[1]{
+colback=yellow!10!white,colframe=red!75!black,
+fonttitle=\bfseries, title={#1}}
+\newtcolorbox{bluebox}[1]{
+colback=blue!5!white,colframe=blue!75!black,
+fonttitle=\bfseries, title={#1}}
+\newtcolorbox{greenbox}[1]{
+colback=green!5!white,colframe=green!75!black,
+fonttitle=\bfseries, title={#1}}
+\newtcolorbox{blueshadebox}[1]{
+enhanced,frame style image=blueshade.png,
+opacityback=0.75,opacitybacktitle=0.25,
+colback=blue!5!white,colframe=blue!75!black,
+fonttitle=\bfseries, title={#1}}
+
+
+
+\lstset{ %
+% language=C++,                % choose the language of the code
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,           % adds a frame around the code
+tabsize=2,          % sets default tabsize to 2 spaces
+captionpos=b,           % sets the caption-position to bottom
+breaklines=true,        % sets automatic line breaking
+breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+escapeinside={\%*}{*)}          % if you want to add a comment within your code
+}
